@@ -1,3 +1,4 @@
+import ResearchBar from './components/ResearchBar';
 
 function App() {
   return <>
