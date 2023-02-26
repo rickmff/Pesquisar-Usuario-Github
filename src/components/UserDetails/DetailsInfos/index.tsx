@@ -2,7 +2,7 @@ import { useContext } from "react";
 import * as S from "./styles";
 import { ThemeContext } from "../../../context/ThemeContext";
 
-interface LinksAreaPropos {
+interface DetailsInfosPropos {
   links: {
     location: string;
     blog: string;
@@ -11,7 +11,7 @@ interface LinksAreaPropos {
   };
 }
 
-export default function LinksArea({ links }: LinksAreaPropos) {
+export default function DetailsInfos({ links }: DetailsInfosPropos) {
   const { lightMode } = useContext(ThemeContext);
 
   return (
