@@ -3,6 +3,9 @@ import * as S from "./styles";
 import { ThemeContext } from "../../context/ThemeContext";
 import { SearchBarProps, UserProps } from "../../types";
 import formatDate from "../../utils/formatDate";
+import MoonIcon from "../../assets/icons/moon.svg";
+import SunIcon from "../../assets/icons/sun.svg";
+import Search from "../../assets/icons/search.svg";
 
 export const Header = ({ setUser }: SearchBarProps) => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
@@ -22,7 +25,9 @@ export const Header = ({ setUser }: SearchBarProps) => {
   }
 
   async function fetchUser(username: string) {
-    const response = await fetch(`https://api.github.com/users/${username}`);
+    const response = await fetch(
+      `https://api.github.com/search/users?q=${username}`
+    );
     const data = await response.json();
 
     if (response.status != 200) {
@@ -54,24 +59,18 @@ export const Header = ({ setUser }: SearchBarProps) => {
     setUser(user);
   }
 
-  useEffect(()=> {
-    fetchUser(inputUser)
-  },[inputUser])
+  useEffect(() => {
+    fetchUser(inputUser);
+  }, [inputUser]);
 
   return (
     <S.Container>
       <S.ThemeArea>
         <S.ChangeThemeBtn type="button" onClick={changeTheme}>
           {lightMode ? (
-            <>
-              DARK
-              <img src="/assets/icon-moon.svg" alt="dark mode" />
-            </>
+            <img src={MoonIcon} alt="dark mode" />
           ) : (
-            <>
-              LIGHT
-              <img src="/assets/icon-sun.svg" alt="light mode" />
-            </>
+            <img src={SunIcon} alt="light mode" />
           )}
         </S.ChangeThemeBtn>
       </S.ThemeArea>
@@ -83,7 +82,7 @@ export const Header = ({ setUser }: SearchBarProps) => {
         }}
       >
         <S.InputLabel>
-          <img src="/assets/icon-search.svg"  alt="search .."/>
+          <img src={Search} alt="search .." />
         </S.InputLabel>
 
         <S.Input
@@ -91,11 +90,11 @@ export const Header = ({ setUser }: SearchBarProps) => {
           name="username"
           id="username"
           type="text"
-          placeholder="Search username ..."
+          placeholder="Pesquisar Usuário ..."
         />
         {notFound && <S.Warn>Não Encontrado</S.Warn>}
 
-        <S.SubmitBtn type="submit">Search</S.SubmitBtn>
+        <S.SubmitBtn type="submit">Pesquisar</S.SubmitBtn>
       </S.InputArea>
     </S.Container>
   );
