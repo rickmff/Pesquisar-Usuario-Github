@@ -1,12 +1,12 @@
 import * as S from "./styles";
 
-interface UserNumbersProps {
+interface DetailsStatsProps {
   repos: number;
   followers: number;
   following: number;
 }
 
-export const UserNumbers = ({ repos, followers, following }: UserNumbersProps) => {
+export const DetailsStats = ({ repos, followers, following }: DetailsStatsProps) => {
   return (
     <S.Container>
       <S.Data>

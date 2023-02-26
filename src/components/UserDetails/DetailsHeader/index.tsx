@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-interface UserInfos {
+interface DetailsHeaderProps {
   username: string;
   bio: string;
   name: string;
@@ -8,13 +8,13 @@ interface UserInfos {
   avatar: string;
 }
 
-export const UserInfos = ({
+export const DetailsHeader = ({
   username,
   name,
   joinedAt,
   bio,
   avatar,
-}: UserInfos) => {
+}: DetailsHeaderProps) => {
   return (
     <>
       <S.Info>

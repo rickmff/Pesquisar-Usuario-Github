@@ -1,6 +1,6 @@
-import { UserInfos } from "./UserInfos";
-import UserSocials from "./UserSocials";
-import { UserNumbers } from "./UserNumbers";
+import { DetailsHeader } from "./DetailsHeader";
+import DetailsInfos from "./DetailsInfos";
+import { DetailsStats } from "./DetailsStats";
 import { UserDetailProps } from "../../types";
 import * as S from "./styles";
 
@@ -10,7 +10,7 @@ export const UserDetails = ({ user }: UserDetailProps) => {
       <S.Avatar src={user.avatar} alt={user.name} />
 
       <S.SideArea>
-        <UserInfos
+        <DetailsHeader
           username={user.username}
           bio={user.bio}
           name={user.name}
@@ -18,13 +18,13 @@ export const UserDetails = ({ user }: UserDetailProps) => {
           avatar={user.avatar}
         />
 
-        <UserNumbers
+        <DetailsStats
           repos={user.repos}
           followers={user.followers}
           following={user.following}
         />
 
-        <UserSocials links={user.links}/>
+        <DetailsInfos links={user.links}/>
       </S.SideArea>
     </S.Container>
   );
