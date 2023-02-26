@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { ThemeContextProvider} from "./context/ThemeContext"
-import Header from "./components/Header";
+import UserSearch from "./components/UserSearch";
 import { useState } from "react";
 import { UserProps } from "./types";
 import UserDetails from "./components/UserDetails";
@@ -15,7 +15,7 @@ function App() {
   return (
     <ThemeContextProvider>
       <Container>
-        <Header setUser={setUserData} />
+        <UserSearch setUser={setUserData} />
         {user && <UserDetails user={user} />}
       </Container>
     </ThemeContextProvider>

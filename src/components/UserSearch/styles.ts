@@ -6,7 +6,7 @@ export const Container = styled.header`
 
   img {
     width: 35px;
-    filter: invert(50%)
+    filter: invert(50%);
   }
 `;
 
@@ -16,14 +16,13 @@ export const ThemeArea = styled.div`
   justify-content: space-between;
 `;
 
-
 export const Warn = styled.small`
-    font-weight: bold;
-    font-size: 1.5rem;
-    line-height: 2.2rem;
-    color: #f74646;
-    margin-right: 2.4rem;
-`
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
+  color: #f74646;
+  margin-right: 2.4rem;
+`;
 
 export const ChangeThemeBtn = styled.button`
   display: flex;
@@ -71,12 +70,18 @@ export const Input = styled.input`
   background: none;
   border: none;
   margin: 0 0.8rem;
+
+  &:focus {
+    outline-style: none;
+  }
+
+  &:-internal-autofill-selected {
+    background-color: #fff !important;
+  }
+
   @media (min-width: 768px) {
     font-size: 1.7rem;
     margin: 0 2.4rem;
-  }
-  &:focus {
-    outline: 1px dashed #0079ff;
   }
 `;
 
@@ -101,3 +106,5 @@ export const SubmitBtn = styled.button`
     font-size: 1.7rem;
   }
 `;
+
+export const Loading = styled.div``;

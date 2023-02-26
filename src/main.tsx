@@ -1,11 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import { GlobalStyle } from './styles/globals'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { GlobalStyle } from "./styles/globals";
+import { QueryClientProvider, QueryClient } from "react-query";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const queryClient = new QueryClient();
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <GlobalStyle />
-    <App />
-  </React.StrictMode>,
-)
+    <QueryClientProvider client={queryClient}>
+      <App />
+    </QueryClientProvider>
+  </React.StrictMode>
+);

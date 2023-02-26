@@ -15,6 +15,12 @@ export interface UserProps {
   };
 }
 
+export interface UsersList {
+  avatar: string;
+  name: string;
+  url: string;
+}
+
 export interface SearchBarProps {
   setUser: (user: UserProps | null ) => void;
 }
