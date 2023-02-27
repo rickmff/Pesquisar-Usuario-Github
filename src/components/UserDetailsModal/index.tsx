@@ -1,12 +1,14 @@
 import { DetailsHeader } from "./DetailsHeader";
 import { DetailsInfos } from "./DetailsInfos";
 import { DetailsStats } from "./DetailsStats";
+
 import * as S from "./styles";
-import { useGithubUserDetails } from "../../Hooks/useGithubUserDetails";
 import * as Dialog from "@radix-ui/react-dialog";
+
+import { useGithubUserDetails } from "../../hooks/useGithubUserDetails";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const UserDetails = () => {
+export const UserDetailsModal = () => {
   const { id } = useParams<{ id: string }>();
   const { data, isError, isLoading } = useGithubUserDetails(id ?? "");
 
@@ -41,8 +43,8 @@ export const UserDetails = () => {
                     followers={data.followers}
                     following={data.following}
                   />
-                  <DetailsInfos links={data.links} />
-                </Dialog.Content>
+{/*                   <DetailsInfos links={data.links} />
+ */}                </Dialog.Content>
               </Dialog.Portal>
             </Dialog.Root>
           </S.SideArea>

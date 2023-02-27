@@ -8,12 +8,13 @@ export interface UserDetails {
   public_repos: number;
   created_at: string;
   login: string;
-
-  twitter_username: string;
-  company: string;
-  location: string;
-  blog: string;
-  email: string;
+  link: {
+    twitter_username: string;
+    company: string;
+    location: string;
+    blog: string;
+    email: string;
+  };
 }
 
 export interface User {

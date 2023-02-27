@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import { UserSearch } from "./components/UserSearch";
-import { UserDetails } from "./components/UserDetails";
+import { UserDetailsModal } from "./components/UserDetailsModal";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
@@ -14,12 +14,12 @@ function App() {
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/">
             <Route index element={<UserSearch />} />
-            <Route path="/user/:id" element={<UserDetails />} />
+            <Route path="/user/:id" element={<UserDetailsModal />} />
           </Route>
         </Routes>
         {state?.backgroundLocation && (
           <Routes>
-            <Route path="/user/:id" element={<UserDetails />} />
+            <Route path="/user/:id" element={<UserDetailsModal />} />
           </Routes>
         )}
       </Container>

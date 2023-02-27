@@ -4,6 +4,9 @@ export const Container = styled.ul`
   display: grid;
   grid-template-columns: 50% 50%;
   list-style: none;
+  @media (max-width: 768px) {
+    grid-template-columns: 100%;
+  }
 `;
 
 export const UserCard = styled.li`
@@ -16,18 +19,13 @@ export const UserCard = styled.li`
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
   transition: .5s;
 
-
-  &:nth-child(2n + 1) {
-    margin-right: 30px;
-  }
-
   &:hover {
     box-shadow: 0px 0px 15px -3px rgba(70, 96, 187, 1);
     transition: 1s;
     cursor: pointer;
   }
 
-  p {
+  a {
     font-size: 1.5rem;
     color: ${(props) => props.theme.colors.textNorm};
   }

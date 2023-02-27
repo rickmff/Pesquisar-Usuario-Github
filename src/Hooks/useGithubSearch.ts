@@ -10,7 +10,7 @@ export function useGithubSearch(username: string) {
     },
   };
 
-  return useQuery<User[]>(["users", username], async () => {
+  return useQuery<User[]>(["users-list", username], async () => {
     const apiUrl = import.meta.env.VITE_API_URL;
 
     if (!username) {

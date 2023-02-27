@@ -9,7 +9,7 @@ export function useGithubUserDetails(id: string) {
     },
   };
 
-  return useQuery<UserDetails>(["users", id], async () => {
+  return useQuery<UserDetails>(["user", id], async () => {
     const apiUrl = import.meta.env.VITE_API_URL;
     const response = await axios.get(`${apiUrl}/users/${id}`, config);
     const user = response.data;
