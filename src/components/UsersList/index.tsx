@@ -1,25 +1,23 @@
+import { User } from "../../types";
 import * as S from "./styles";
 
 interface UsersListProps {
-  list: object[];
+  list: User[];
 }
 
 export const UsersList = ({ list }: UsersListProps) => {
 
   console.log(list);
-  
+
 
   return (
     <S.Container>
-      {list.map((user: any) => (
+      {list.map((user: User) => (
         <S.UserCard key={user.id}>
-          <p>{user.name}</p>
-          <img src={user.avatar_url} alt={user.name} />
-          <p>{user.url}</p>
+          <img src={user.avatar_url} alt={`Foto de perfil do ${user.login}`} />
+          <p>{user.login}</p>
         </S.UserCard>
       ))}
     </S.Container>
   );
 };
-
-export default UsersList;

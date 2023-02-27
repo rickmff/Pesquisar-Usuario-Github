@@ -11,7 +11,7 @@ interface DetailsInfosPropos {
   };
 }
 
-export default function DetailsInfos({ links }: DetailsInfosPropos) {
+export function DetailsInfos({ links }: DetailsInfosPropos) {
   const { lightMode } = useContext(ThemeContext);
 
   return (

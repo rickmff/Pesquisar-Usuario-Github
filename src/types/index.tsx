@@ -1,4 +1,4 @@
-export interface UserProps {
+export interface UserDetails {
   name: string;
   avatar: string;
   bio: string;
@@ -15,18 +15,19 @@ export interface UserProps {
   };
 }
 
-export interface UsersList {
+export interface User {
   avatar_url: string;
   login: string;
   url: string;
+  id: number;
 }
 
 export interface SearchBarProps {
-  setUser: (user: UserProps | null ) => void;
+  setUser: (user: UserDetails | null ) => void;
 }
 
 export interface UserDetailProps {
-  user: UserProps;
+  user: UserDetails;
 }
 
 

@@ -3,11 +3,6 @@ import styled from "styled-components";
 export const Container = styled.header`
   width: 100%;
   max-width: 73.3rem;
-
-  img {
-    width: 35px;
-    filter: invert(50%);
-  }
 `;
 
 export const ThemeArea = styled.div`
@@ -44,6 +39,9 @@ export const ChangeThemeBtn = styled.button`
   letter-spacing: 0.25rem;
   color: ${(props) => props.theme.colors.themeBtn};
   cursor: pointer;
+  img {
+    width: 35px;
+  }
 `;
 
 export const InputArea = styled.form`
@@ -67,6 +65,9 @@ export const InputArea = styled.form`
 export const InputLabel = styled.label`
   height: 2.4rem;
   cursor: pointer;
+  img {
+    width: 35px;
+  }
 `;
 
 export const Input = styled.input`

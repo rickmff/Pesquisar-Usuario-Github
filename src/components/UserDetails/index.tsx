@@ -1,5 +1,5 @@
 import { DetailsHeader } from "./DetailsHeader";
-import DetailsInfos from "./DetailsInfos";
+import { DetailsInfos } from "./DetailsInfos";
 import { DetailsStats } from "./DetailsStats";
 import { UserDetailProps } from "../../types";
 import * as S from "./styles";
@@ -29,5 +29,3 @@ export const UserDetails = ({ user }: UserDetailProps) => {
     </S.Container>
   );
 };
-
-export default UserDetails;

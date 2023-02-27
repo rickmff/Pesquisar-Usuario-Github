@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { UsersList } from "../types";
+import { User } from "../types";
 
 export function useGithubSearch(username: string) {
 
@@ -10,7 +10,7 @@ export function useGithubSearch(username: string) {
     },
   };
 
-  return useQuery<UsersList[]>(["users", username], async () => {
+  return useQuery<User[]>(["users", username], async () => {
     const apiUrl = import.meta.env.VITE_API_URL;
 
     if (!username) {
@@ -18,11 +18,12 @@ export function useGithubSearch(username: string) {
     }
     const response = await axios.get(`${apiUrl}/search/users?q=${username}`, config);
     const data = response.data;
-    const users = data.items.map((user: UsersList) => {
+    const users = data.items.map((user: User) => {
       return {
-        avatar: user.avatar_url,
-        name: user.login,
+        avatar_url: user.avatar_url,
+        login: user.login,
         url: user.url,
+        id: user.id,
       };
     });
     return users;

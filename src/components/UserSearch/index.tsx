@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useState, useRef } from "react";
 import * as S from "./styles";
 import { ThemeContext } from "../../context/ThemeContext";
 import { SearchBarProps } from "../../types";
@@ -6,9 +6,9 @@ import MoonIcon from "../../assets/icons/moon.svg";
 import SunIcon from "../../assets/icons/sun.svg";
 import Search from "../../assets/icons/search.svg";
 import { useGithubSearch } from "../../Hooks/useGithubSearch";
-import UsersList from "../UsersList";
+import { UsersList } from "../UsersList";
 
-export const Header = ({ setUser }: SearchBarProps) => {
+export const UserSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
   const usernameRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
@@ -20,7 +20,6 @@ export const Header = ({ setUser }: SearchBarProps) => {
       usernameRef.current?.value.trim() === "" ||
       usernameRef.current?.value === undefined
     ) {
-      setUser(null);
       return;
     }
     setQuery(usernameRef.current.value);
@@ -67,5 +66,3 @@ export const Header = ({ setUser }: SearchBarProps) => {
     </S.Container>
   );
 };
-
-export default Header;
