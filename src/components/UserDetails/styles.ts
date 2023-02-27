@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as Dialog from '@radix-ui/react-dialog'
 
 export const Container = styled.section`
   width: 100%;
@@ -37,4 +38,10 @@ export const Avatar = styled.img`
 
 export const SideArea = styled.div`
   width: 100%;
+`;
+
+export const BackgroundModal = styled(Dialog.Overlay)`
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 `;

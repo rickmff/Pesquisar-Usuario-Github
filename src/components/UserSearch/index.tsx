@@ -4,20 +4,23 @@ import { ThemeContext } from "../../context/ThemeContext";
 import { useGithubSearch } from "../../Hooks/useGithubSearch";
 import { UsersList } from "../UsersList";
 import { Moon, Search, Sun } from "react-feather";
+import { useLocation } from "react-router-dom";
 
 export const UserSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
+  
   const usernameRef = useRef<HTMLInputElement>(null);
   const [user, setUser] = useState("");
-
   const { data, isError, isLoading } = useGithubSearch(user);
+  const location = useLocation();
 
+  
   function handleSubmit() {
     if (
       usernameRef.current?.value.trim() === "" ||
       usernameRef.current?.value === undefined
     ) {
-      return;
+      return; 
     }
     setUser(usernameRef.current.value);
   }
@@ -53,7 +56,9 @@ export const UserSearch = () => {
 
       {isLoading && <S.Loading>Carregando...</S.Loading>}
 
-      {!isLoading && data && <UsersList list={data} />}
+      {/* ARRUMAR O TIPO DO LOCATION */}
+
+      {!isLoading && data && <UsersList list={data} location={location as unknown as Location}/>}
     </S.Container>
   );
 };

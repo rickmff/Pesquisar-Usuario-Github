@@ -1,18 +1,19 @@
 export interface UserDetails {
+  id: number;
   name: string;
-  avatar: string;
+  avatar_url: string;
   bio: string;
   followers: number;
   following: number;
-  repos: number;
-  joinedAt: string;
-  username: string;
-  links: {
-    blog: string;
-    twitter: string;
-    company: string;
-    location: string;
-  };
+  public_repos: number;
+  created_at: string;
+  login: string;
+
+  twitter_username: string;
+  company: string;
+  location: string;
+  blog: string;
+  email: string;
 }
 
 export interface User {
@@ -23,11 +24,5 @@ export interface User {
 }
 
 export interface SearchBarProps {
-  setUser: (user: UserDetails | null ) => void;
+  setUser: (user: UserDetails | null) => void;
 }
-
-export interface UserDetailProps {
-  user: UserDetails;
-}
-
-
