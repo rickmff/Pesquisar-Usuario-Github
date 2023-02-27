@@ -1,15 +1,12 @@
 import { User } from "../../types";
 import * as S from "./styles";
 
+
 interface UsersListProps {
   list: User[];
 }
 
 export const UsersList = ({ list }: UsersListProps) => {
-
-  console.log(list);
-
-
   return (
     <S.Container>
       {list.map((user: User) => (

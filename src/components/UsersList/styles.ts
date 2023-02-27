@@ -12,10 +12,19 @@ export const UserCard = styled.li`
   display: flex;
   align-items: center;
   background: ${(props) => props.theme.colors.card};
-  border-radius: 10px;
+  border-radius: 1.5rem;
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  transition: .5s;
+
 
   &:nth-child(2n + 1) {
     margin-right: 30px;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 15px -3px rgba(70, 96, 187, 1);
+    transition: 1s;
+    cursor: pointer;
   }
 
   p {

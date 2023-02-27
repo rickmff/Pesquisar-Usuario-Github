@@ -22,7 +22,8 @@ export const Warn = styled.small`
 export const Loading = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 2.4rem;
+  justify-content: center;
+  margin-top: 5rem;
   font-weight: bold;
   font-size: 3rem;
   opacity: 0.5;
@@ -39,9 +40,6 @@ export const ChangeThemeBtn = styled.button`
   letter-spacing: 0.25rem;
   color: ${(props) => props.theme.colors.themeBtn};
   cursor: pointer;
-  img {
-    width: 35px;
-  }
 `;
 
 export const InputArea = styled.form`
@@ -63,11 +61,9 @@ export const InputArea = styled.form`
 `;
 
 export const InputLabel = styled.label`
-  height: 2.4rem;
-  cursor: pointer;
-  img {
-    width: 35px;
-  }
+  height: 2.5rem;
+  color: ${(props) => props.theme.colors.textNorm};
+  padding-top: 5px;
 `;
 
 export const Input = styled.input`

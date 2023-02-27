@@ -19,9 +19,9 @@ const Container = styled.main`
   align-items: center;
   justify-content: center;
   background: ${props => props.theme.colors.background};
-  padding: 3.1rem 2.4rem;
+  padding: 3rem 2.5rem;
   @media (min-width: 768px) {
-    padding: 3.1rem 7rem;
+    padding: 3rem 7rem;
   }
 `;
 
