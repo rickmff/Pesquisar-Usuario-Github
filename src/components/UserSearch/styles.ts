@@ -13,7 +13,7 @@ export const Container = styled.header`
 export const ThemeArea = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 `;
 
 export const Warn = styled.small`
@@ -22,6 +22,15 @@ export const Warn = styled.small`
   line-height: 2.2rem;
   color: #f74646;
   margin-right: 2.4rem;
+`;
+
+export const Loading = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 2.4rem;
+  font-weight: bold;
+  font-size: 3rem;
+  opacity: 0.5;
 `;
 
 export const ChangeThemeBtn = styled.button`
@@ -106,5 +115,3 @@ export const SubmitBtn = styled.button`
     font-size: 1.7rem;
   }
 `;
-
-export const Loading = styled.div``;

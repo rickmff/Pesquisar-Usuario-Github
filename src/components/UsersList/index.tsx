@@ -1,10 +1,25 @@
-import * as S from './styles'
+import * as S from "./styles";
 
-export const UsersList = () => {
-  return (
-    <S.Container>PUDIM</S.Container>
-  )
+interface UsersListProps {
+  list: object[];
 }
 
-export default UsersList
+export const UsersList = ({ list }: UsersListProps) => {
 
+  console.log(list);
+  
+
+  return (
+    <S.Container>
+      {list.map((user: any) => (
+        <S.UserCard key={user.id}>
+          <p>{user.name}</p>
+          <img src={user.avatar_url} alt={user.name} />
+          <p>{user.url}</p>
+        </S.UserCard>
+      ))}
+    </S.Container>
+  );
+};
+
+export default UsersList;

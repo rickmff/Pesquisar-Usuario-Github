@@ -4,9 +4,16 @@ import formatDate from "../utils/formatDate";
 import { useQuery } from "react-query";
 
 export function useGithubUserDetails(username: string) {
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
+    },
+  };
+
   return useQuery<UserProps[]>(["users", username], async () => {
     const apiUrl = import.meta.env.VITE_API_URL;
-    const response = await axios.get(`${apiUrl}/users/${username}`);
+    const response = await axios.get(`${apiUrl}/users/${username}`, config);
     const data = response.data;
 
     const user = data.items.map((user: UserProps) => {

@@ -6,13 +6,14 @@ import MoonIcon from "../../assets/icons/moon.svg";
 import SunIcon from "../../assets/icons/sun.svg";
 import Search from "../../assets/icons/search.svg";
 import { useGithubSearch } from "../../Hooks/useGithubSearch";
+import UsersList from "../UsersList";
 
 export const Header = ({ setUser }: SearchBarProps) => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
   const usernameRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState("");
 
-  const { data, isError, isLoading  } = useGithubSearch(query);
+  const { data, isError, isLoading } = useGithubSearch(query);
 
   function handleSubmit() {
     if (
@@ -24,6 +25,8 @@ export const Header = ({ setUser }: SearchBarProps) => {
     }
     setQuery(usernameRef.current.value);
   }
+
+  console.log(data);
 
   return (
     <S.Container>
@@ -54,12 +57,13 @@ export const Header = ({ setUser }: SearchBarProps) => {
           type="text"
           placeholder="Pesquisar Usuário ..."
         />
-        {isError && <S.Warn>Não Encontrado</S.Warn>}
 
         <S.SubmitBtn type="submit">Pesquisar</S.SubmitBtn>
       </S.InputArea>
 
       {isLoading && <S.Loading>Carregando...</S.Loading>}
+
+      {!isLoading && data && <UsersList list={data}/>}
     </S.Container>
   );
 };

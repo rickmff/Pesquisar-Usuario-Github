@@ -16,8 +16,8 @@ export interface UserProps {
 }
 
 export interface UsersList {
-  avatar: string;
-  name: string;
+  avatar_url: string;
+  login: string;
   url: string;
 }
 
