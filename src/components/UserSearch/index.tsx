@@ -1,16 +1,19 @@
-import { useContext, useState, useRef } from "react";
-import * as S from "./styles";
-import { ThemeContext } from "../../context/ThemeContext";
-import { useGithubSearch } from "../../Hooks/useGithubSearch";
 import { UsersList } from "../UsersList";
 import { Moon, Search, Sun } from "react-feather";
+import * as S from "./styles";
+import { useGithubSearch } from "../../hooks/useGithubSearch";
+import { useLocation } from "react-router-dom";
+import { ThemeContext } from "../../context/ThemeContext";
+import { useContext, useState, useRef } from "react";
+import { FadeIn } from "../../animations/fadeIn";
 
 export const UserSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
+
   const usernameRef = useRef<HTMLInputElement>(null);
   const [user, setUser] = useState("");
-
   const { data, isError, isLoading } = useGithubSearch(user);
+  const location = useLocation();
 
   function handleSubmit() {
     if (
@@ -30,30 +33,31 @@ export const UserSearch = () => {
         </S.ChangeThemeBtn>
       </S.ThemeArea>
 
-      <S.InputArea
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSubmit();
-        }}
-      >
-        <S.InputLabel>
-          <Search />
-        </S.InputLabel>
-
-        <S.Input
-          ref={usernameRef}
-          name="username"
-          id="username"
-          type="text"
-          placeholder="Pesquisar Usuário ..."
-        />
-
-        {<S.SubmitBtn type="submit">Pesquisar</S.SubmitBtn>}
-      </S.InputArea>
+      <FadeIn delay={1}>
+        <S.InputArea
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
+          <S.SubmitBtn type="submit">
+            <S.InputLabel>
+              <Search />
+            </S.InputLabel>
+          </S.SubmitBtn>
+          <S.Input
+            ref={usernameRef}
+            name="username"
+            id="username"
+            type="text"
+            placeholder="Pesquisar Usuário ..."
+          />
+        </S.InputArea>
+      </FadeIn>
 
       {isLoading && <S.Loading>Carregando...</S.Loading>}
 
-      {!isLoading && data && <UsersList list={data} />}
+      {!isLoading && data && <UsersList list={data} location={location} />}
     </S.Container>
   );
 };

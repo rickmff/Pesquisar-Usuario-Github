@@ -1,3 +1,4 @@
+import formatDate from "../../../utils/formatDate";
 import * as S from "./styles";
 
 interface DetailsHeaderProps {
@@ -15,18 +16,19 @@ export const DetailsHeader = ({
   bio,
   avatar,
 }: DetailsHeaderProps) => {
+
+  const date = formatDate(joinedAt);
   return (
     <>
       <S.Info>
         <S.Avatar src={avatar} alt={name} />
-        <S.SideInfo>
+        <S.Info>
           <S.Name>{name}</S.Name>
-          <S.Username>
+          <span>
             <a href={`https://github.com/${username}`}>@{username}</a>
-          </S.Username>
-
-          <S.JoinedAt>{joinedAt}</S.JoinedAt>
-        </S.SideInfo>
+          </span>
+          <span>{date}</span>
+        </S.Info>
       </S.Info>
       <S.Bio>{bio}</S.Bio>
     </>

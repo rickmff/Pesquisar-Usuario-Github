@@ -7,25 +7,34 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   background: ${(props) => props.theme.colors.background};
-  padding: 1.8rem 1.4rem;
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 1.8rem 3.2rem;
+  }
+  @media (max-width: 375px) {
+    flex-direction: column;
   }
 `;
 
-export const Data = styled.li`
+export const Stats = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (min-width: 768px) {
-    align-items: flex-start;
+  background-color: ${(props) => props.theme.colors.card};
+  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567);
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  margin: 0 .5rem;
+  width: 150px;
+  @media (max-width: 768px) {
+    width: 100px;
+    padding: 0.5rem;
+    margin: 0.5rem;
   }
   span {
-    font-size: 1.3rem;
-    line-height: 1.6rem;
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    line-height: 1.5rem;
     text-align: center;
     color: ${(props) => props.theme.colors.textNorm};
     @media (min-width: 768px) {
