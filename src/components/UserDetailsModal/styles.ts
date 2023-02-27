@@ -41,7 +41,22 @@ export const SideArea = styled.div`
 `;
 
 export const BackgroundModal = styled(Dialog.Overlay)`
+  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+`;
+
+export const ContentModal = styled(Dialog.Content)`
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1000px;
+  margin: 50px auto;
+  padding: 50px;
+  flex-direction: column; 
+  background-color: ${(props) => props.theme.colors.background};
+  border-radius: 1.5rem;
 `;

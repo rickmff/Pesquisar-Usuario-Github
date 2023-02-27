@@ -24,13 +24,13 @@ export const UserDetailsModal = () => {
     <S.Container>
       {!isLoading && data && (
         <>
-          <S.Avatar src={data.avatar_url} alt={data.name} />
           <S.SideArea>
             <Dialog.Root open onOpenChange={handleClose}>
               <Dialog.Portal>
                 <S.BackgroundModal />
-                <Dialog.Content>
+                <S.ContentModal>
                   <Dialog.Close />
+                  <S.Avatar src={data.avatar_url} alt={data.name} />
                   <DetailsHeader
                     username={data.login}
                     bio={data.bio}
@@ -43,8 +43,8 @@ export const UserDetailsModal = () => {
                     followers={data.followers}
                     following={data.following}
                   />
-{/*                   <DetailsInfos links={data.links} />
- */}                </Dialog.Content>
+                  <DetailsInfos links={data.links} />
+                </S.ContentModal>
               </Dialog.Portal>
             </Dialog.Root>
           </S.SideArea>

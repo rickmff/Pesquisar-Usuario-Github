@@ -40,10 +40,11 @@ export const UserSearch = () => {
             handleSubmit();
           }}
         >
-          <S.InputLabel>
-            <Search />
-          </S.InputLabel>
-
+          <S.SubmitBtn type="submit">
+            <S.InputLabel>
+              <Search />
+            </S.InputLabel>
+          </S.SubmitBtn>
           <S.Input
             ref={usernameRef}
             name="username"
@@ -51,8 +52,6 @@ export const UserSearch = () => {
             type="text"
             placeholder="Pesquisar Usuário ..."
           />
-
-          {<S.SubmitBtn type="submit">Pesquisar</S.SubmitBtn>}
         </S.InputArea>
       </FadeIn>
 
