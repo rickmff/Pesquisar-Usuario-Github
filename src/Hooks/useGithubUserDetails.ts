@@ -20,6 +20,7 @@ export function useGithubUserDetails(id: string) {
         blog: user.blog,
         twitter: user.twitter_username,
         company: user.company,
+        email: user.email,
       },
     };
     return userLinks;

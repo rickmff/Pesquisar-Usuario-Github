@@ -9,20 +9,20 @@ interface DetailsStatsProps {
 export const DetailsStats = ({ repos, followers, following }: DetailsStatsProps) => {
   return (
     <S.Container>
-      <S.Data>
+      <S.Stats>
         <span>Repos</span>
         <strong>{repos}</strong>
-      </S.Data>
+      </S.Stats>
 
-      <S.Data>
+      <S.Stats>
         <span>Followers</span>
         <strong>{followers}</strong>
-      </S.Data>
+      </S.Stats>
 
-      <S.Data>
+      <S.Stats>
       <span>Following</span>
         <strong>{following}</strong>
-      </S.Data>
+      </S.Stats>
     </S.Container>
   );
 };

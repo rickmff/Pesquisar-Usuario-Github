@@ -7,6 +7,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { useGithubUserDetails } from "../../hooks/useGithubUserDetails";
 import { useNavigate, useParams } from "react-router-dom";
+import { X } from "react-feather";
 
 export const UserDetailsModal = () => {
   const { id } = useParams<{ id: string }>();
@@ -23,32 +24,40 @@ export const UserDetailsModal = () => {
   return (
     <S.Container>
       {!isLoading && data && (
-        <>
-          <S.SideArea>
-            <Dialog.Root open onOpenChange={handleClose}>
-              <Dialog.Portal>
-                <S.BackgroundModal />
-                <S.ContentModal>
-                  <Dialog.Close />
-                  <S.Avatar src={data.avatar_url} alt={data.name} />
-                  <DetailsHeader
-                    username={data.login}
-                    bio={data.bio}
-                    name={data.name}
-                    joinedAt={data.created_at}
-                    avatar={data.avatar_url}
-                  />
-                  <DetailsStats
-                    repos={data.public_repos}
-                    followers={data.followers}
-                    following={data.following}
-                  />
-                  <DetailsInfos links={data.links} />
-                </S.ContentModal>
-              </Dialog.Portal>
-            </Dialog.Root>
-          </S.SideArea>
-        </>
+        <Dialog.Root open onOpenChange={handleClose}>
+          <Dialog.Portal>
+            <S.BackgroundModal />
+            <S.ContentModal>
+              <S.CloseModal>
+                <X />
+              </S.CloseModal>
+              <DetailsHeader
+                username={data.login}
+                bio={data.bio}
+                name={data.name}
+                joinedAt={data.created_at}
+                avatar={data.avatar_url}
+              />
+              <DetailsStats
+                repos={data.public_repos}
+                followers={data.followers}
+                following={data.following}
+              />
+              <DetailsInfos links={data.links} />
+            </S.ContentModal>
+          </Dialog.Portal>
+        </Dialog.Root>
+      )}
+      {isError && (
+        <Dialog.Root open onOpenChange={handleClose}>
+          <Dialog.Portal>
+            <S.BackgroundModal />
+            <S.ContentModal>
+              <Dialog.Close />
+              <h1>Erro ao carregar os dados do Usuário</h1>
+            </S.ContentModal>
+          </Dialog.Portal>
+        </Dialog.Root>
       )}
     </S.Container>
   );

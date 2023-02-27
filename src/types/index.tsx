@@ -8,7 +8,7 @@ export interface UserDetails {
   public_repos: number;
   created_at: string;
   login: string;
-  link: {
+  links: {
     twitter_username: string;
     company: string;
     location: string;

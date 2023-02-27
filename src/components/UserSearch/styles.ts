@@ -38,8 +38,14 @@ export const ChangeThemeBtn = styled.button`
   font-size: 1.6rem;
   line-height: 1.9rem;
   letter-spacing: 0.25rem;
-  color: ${(props) => props.theme.colors.themeBtn};
+  color: ${(props) => props.theme.colors.themeIcon};
   cursor: pointer;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 0.7;
+    transition: opacity 0.5s;
+  }
 `;
 
 export const InputArea = styled.form`
@@ -52,12 +58,10 @@ export const InputArea = styled.form`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.7rem 0.7rem 0.7rem 1.6rem;
+  padding: 1.5rem;
   transition: height 0.3s ease;
   position: relative;
-  @media (min-width: 768px) {
-    height: 6.9rem;
-  }
+  margin-bottom: 3rem;
 `;
 
 export const InputLabel = styled.label`
@@ -76,6 +80,7 @@ export const Input = styled.input`
   background: none;
   border: none;
   margin: 0 0.8rem;
+  width: 100%;
 
   &:focus {
     outline-style: none;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.ul`
   list-style: none;
@@ -12,21 +12,31 @@ export const Container = styled.ul`
 
 export const Link = styled.li`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-top: 1rem;
-  a {
-    display: grid;
-    grid-template-columns: 20px 1fr;
+  margin: 1.6rem;
+  color: ${(props) => props.theme.colors.textNorm};
+  transition: 0.5s;
+
+  a,
+  span {
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.textNorm};
+    margin-left: 1rem;
+    transition: 0.5s;
+    &:hover {
+      color: ${(props) => props.theme.colors.textBolded};
+      cursor: pointer;
+      transition: 0.5s;
+    }
   }
-  svg {
-    width: 20px;
-  }
+
   &.unavailable {
     opacity: 0.5;
   }
 `;
 
-export const Data = styled.span`
+export const LinkItem = styled.span`
   font-size: 1.4rem;
   line-height: 2rem;
   color: ${(props) => props.theme.colors.textNorm};
