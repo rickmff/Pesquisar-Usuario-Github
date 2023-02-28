@@ -1,6 +1,6 @@
 # Pesquisar Usuarios no GitHub
 
-## O seguinte projeto foi desenvolvido com propósito de demonstrar qualificação tecnica com os requisitos solicitados no documento:
+### O seguinte projeto foi desenvolvido com propósito de demonstrar qualificação tecnica com os requisitos solicitados no documento:
 - https://docs.google.com/document/d/1ulHllzDqBpEMjDbKsz_DYq7KreM-aWFej1cn7dwFl5M/edit#
 
 ### Foi ultilizado
