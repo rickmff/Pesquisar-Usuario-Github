@@ -17,6 +17,10 @@ export const Warn = styled.small`
   z-index: -1;
   color: #f74646;
   margin-right: 2.4rem;
+  svg {
+    margin-right: 0.5rem;
+    vertical-align: top;
+  }
 `;
 
 export const Loading = styled.div`

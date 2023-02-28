@@ -68,7 +68,7 @@ export const UserSearch = () => {
         </S.InputArea>
 
         <S.Warn>
-          {!isLoading && warning || isError && (
+          {!isLoading && (warning || isError) && (
             <DropDown delay={1}><Frown />Nenhum usuário encontrado</DropDown>
           )}
         </S.Warn>
