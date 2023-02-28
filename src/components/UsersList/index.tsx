@@ -1,23 +1,23 @@
-import { User } from "../../types";
+import { UserHeader } from "../../interfaces";
 import * as S from "./styles";
 import { Link, type Location } from "react-router-dom";
 import { FadeIn } from "../../animations/fadeIn";
 
 interface UsersListProps {
-  list: User[];
+  list: UserHeader[];
   location: Location;
 }
 
 export const UsersList = ({ list, location }: UsersListProps) => {
   return (
     <S.Container>
-      {list.map((user: User, index) => (
+      {list.map((user: UserHeader, index) => (
         <Link
           to={`/user/${user.login}`}
-          key={user.id}
+          key={user.login}
           state={{ backgroundLocation: location }}
         >
-          <FadeIn delay={0.25 * index}>
+          <FadeIn delay={0.15 * index}>
             <S.UserCard>
               <img
                 src={user.avatar_url}

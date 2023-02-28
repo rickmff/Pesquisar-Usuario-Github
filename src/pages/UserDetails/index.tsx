@@ -1,6 +1,6 @@
-import { DetailsHeader } from "./DetailsHeader";
-import { DetailsLinks } from "./DetailsLinks";
-import { DetailsStats } from "./DetailsStats";
+import { DetailsHeader } from "../../components/UserDetailsModal/DetailsHeader";
+import { DetailsLinks } from "../../components/UserDetailsModal/DetailsLinks";
+import { DetailsStats } from "../../components/UserDetailsModal/DetailsStats";
 
 import * as S from "./styles";
 import * as Dialog from "@radix-ui/react-dialog";
@@ -9,7 +9,7 @@ import { useGithubUserDetails } from "../../hooks/useGithubUserDetails";
 import { useNavigate, useParams } from "react-router-dom";
 import { X } from "react-feather";
 
-export const UserDetailsModal = () => {
+export const UserDetails = () => {
   const { login } = useParams<{ login: string }>();
   const { data, isError, isLoading } = useGithubUserDetails(login ?? "");
 
@@ -37,7 +37,7 @@ export const UserDetailsModal = () => {
                 avatar_url={data.header.avatar_url}
               />
               <DetailsStats
-                repos={data.stats.public_repos}
+                public_repos={data.stats.public_repos}
                 followers={data.stats.followers}
                 following={data.stats.following}
               />

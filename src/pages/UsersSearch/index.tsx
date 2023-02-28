@@ -1,4 +1,4 @@
-import { UsersList } from "../UsersList";
+import { UsersList } from "../../components/UsersList";
 import { Frown, Moon, Search, Sun } from "react-feather";
 import * as S from "./styles";
 import { useGithubSearch } from "../../hooks/useGithubSearch";
@@ -8,7 +8,7 @@ import { useContext, useState, FormEvent, useEffect } from "react";
 import { FadeIn } from "../../animations/fadeIn";
 import { DropDown } from "../../animations/dropDown";
 
-export const UserSearch = () => {
+export const UsersSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
 
   const [user, setUser] = useState("");
