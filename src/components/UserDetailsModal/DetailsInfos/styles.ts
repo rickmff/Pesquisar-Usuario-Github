@@ -24,11 +24,11 @@ export const Link = styled.li`
     color: ${(props) => props.theme.colors.textNorm};
     margin-left: 1rem;
     transition: 0.5s;
-    &:hover {
-      color: ${(props) => props.theme.colors.textBolded};
-      cursor: pointer;
-      transition: 0.5s;
-    }
+  }
+  a:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    opacity: 0.7;
   }
 
   &.unavailable {

@@ -18,7 +18,6 @@ export function useGithubUserDetails(id: string) {
       links: {
         location: user.location,
         blog: user.blog,
-        twitter: user.twitter_username,
         company: user.company,
         email: user.email,
       },
