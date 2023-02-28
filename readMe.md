@@ -28,8 +28,8 @@
   npm run test
 ```
 
-### Preview
-#### Preview em produção
+## Preview
+### Preview em produção
 - https://pesquisar-usuario-github.vercel.app/
 <br/>
 
