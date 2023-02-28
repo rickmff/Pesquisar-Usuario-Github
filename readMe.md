@@ -18,6 +18,17 @@
 ### Foi desenvolvido 
 - O projeto que pesquisa usuários do Github pelo nome de usuário listando cada perfil e podendo exibir o detalhe dos perfils dinamicamente em um modal.
 
+### Setup
+#### Instalar as dependências
+```
+  npm i
+```
+<br>
+##### Testes com e2e com cypress
+```
+  npm run test
+```
+
 ### Preview
 ![image](https://user-images.githubusercontent.com/46444941/221876131-ab138373-3e1b-46e1-a96e-c4e6128b1978.png)
 ![image](https://user-images.githubusercontent.com/46444941/221876876-bcaf1711-34b0-40ea-8571-426ea8ec91f3.png)
