@@ -28,7 +28,7 @@ export const ThemeContextProvider = ({ children }:ThemeContextProviderProps) => 
     const mode = lightMode ? "light" : "dark";
 
     localStorage.setItem("theme", mode);
-  });
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ changeTheme, lightMode }}>

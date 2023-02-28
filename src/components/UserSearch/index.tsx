@@ -1,29 +1,40 @@
 import { UsersList } from "../UsersList";
-import { Moon, Search, Sun } from "react-feather";
+import { Frown, Moon, Search, Sun } from "react-feather";
 import * as S from "./styles";
 import { useGithubSearch } from "../../hooks/useGithubSearch";
 import { useLocation } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState, FormEvent, useEffect } from "react";
 import { FadeIn } from "../../animations/fadeIn";
+import { DropDown } from "../../animations/dropDown";
 
 export const UserSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
 
-  const usernameRef = useRef<HTMLInputElement>(null);
   const [user, setUser] = useState("");
+  const [warning, setWarning] = useState(false);
   const { data, isError, isLoading } = useGithubSearch(user);
   const location = useLocation();
 
-  function handleSubmit() {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    const input = e.target as HTMLFormElement;
+    console.log(input.username.value);
     if (
-      usernameRef.current?.value.trim() === "" ||
-      usernameRef.current?.value === undefined
+      input.username.value.trim() === "" ||
+      input.username.value === undefined
     ) {
       return;
     }
-    setUser(usernameRef.current.value);
+    setUser(input.username.value);
   }
+
+  useEffect(() => {
+    if (data?.length !== 0) {
+      setWarning(false);
+    } else {
+      setWarning(true);
+    }
+  }, [handleSubmit])
 
   return (
     <S.Container>
@@ -37,7 +48,7 @@ export const UserSearch = () => {
         <S.InputArea
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit();
+            handleSubmit(e);
           }}
         >
           <S.SubmitBtn type="submit">
@@ -46,13 +57,21 @@ export const UserSearch = () => {
             </S.InputLabel>
           </S.SubmitBtn>
           <S.Input
-            ref={usernameRef}
             name="username"
             id="username"
             type="text"
-            placeholder="Pesquisar Usuário ..."
+            pattern="[a-zA-Z0-9]+"
+            placeholder="Digite um nome de usuário e pressione Enter ..."
+            required
+            title="Digite um nome de usuário válido sem caracteres especiais"
           />
         </S.InputArea>
+
+        <S.Warn>
+          {!isLoading && (warning || isError) && (
+            <DropDown delay={1}><Frown />Nenhum usuário encontrado</DropDown>
+          )}
+        </S.Warn>
       </FadeIn>
 
       {isLoading && <S.Loading>Carregando...</S.Loading>}

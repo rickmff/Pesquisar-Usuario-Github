@@ -1,5 +1,5 @@
 import { DetailsHeader } from "./DetailsHeader";
-import { DetailsInfos } from "./DetailsInfos";
+import { DetailsLinks } from "./DetailsLinks";
 import { DetailsStats } from "./DetailsStats";
 
 import * as S from "./styles";
@@ -10,13 +10,13 @@ import { useNavigate, useParams } from "react-router-dom";
 import { X } from "react-feather";
 
 export const UserDetailsModal = () => {
-  const { id } = useParams<{ id: string }>();
-  const { data, isError, isLoading } = useGithubUserDetails(id ?? "");
+  const { login } = useParams<{ login: string }>();
+  const { data, isError, isLoading } = useGithubUserDetails(login ?? "");
 
   const navigate = useNavigate();
 
   const handleClose = () => {
-    return navigate(-1);
+    return navigate("/");
   };
 
   return (
@@ -30,18 +30,23 @@ export const UserDetailsModal = () => {
                 <X />
               </S.CloseModal>
               <DetailsHeader
-                username={data.login}
-                bio={data.bio}
-                name={data.name}
-                joinedAt={data.created_at}
-                avatar={data.avatar_url}
+                login={data.header.login}
+                bio={data.header.bio}
+                name={data.header.name}
+                created_at={data.header.created_at}
+                avatar_url={data.header.avatar_url}
               />
               <DetailsStats
-                repos={data.public_repos}
-                followers={data.followers}
-                following={data.following}
+                repos={data.stats.public_repos}
+                followers={data.stats.followers}
+                following={data.stats.following}
               />
-              <DetailsInfos links={data.links} />
+              <DetailsLinks
+                location={data.links.location}
+                blog={data.links.blog}
+                company={data.links.company}
+                email={data.links.email}
+              />
             </S.ContentModal>
           </Dialog.Portal>
         </Dialog.Root>
@@ -51,7 +56,9 @@ export const UserDetailsModal = () => {
           <Dialog.Portal>
             <S.BackgroundModal />
             <S.ContentModal>
-              <Dialog.Close />
+              <S.CloseModal>
+                <X />
+              </S.CloseModal>
               <h1>Erro ao carregar os dados do Usuário</h1>
             </S.ContentModal>
           </Dialog.Portal>

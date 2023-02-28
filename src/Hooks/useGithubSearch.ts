@@ -1,29 +1,21 @@
-import axios from "axios";
 import { useQuery } from "react-query";
-import { User } from "../types";
+import { api } from "../client/axios";
+import { UserHeader } from "../interfaces";
 
 export function useGithubSearch(username: string) {
-
-  const config = {
-    headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-    },
-  };
-
-  return useQuery<User[]>(["users-list", username], async () => {
-    const apiUrl = import.meta.env.VITE_API_URL;
-
+  
+  return useQuery<UserHeader[]>(["users-list", username], async () => {
     if (!username) {
       return [];
     }
-    const response = await axios.get(`${apiUrl}/search/users?q=${username}`, config);
+
+    const response = await api.get(`/search/users?q=${username}`);
     const data = response.data;
-    const users = data.items.map((user: User) => {
+
+    const users: UserHeader[] = data.items.map((user: UserHeader) => {
       return {
         avatar_url: user.avatar_url,
         login: user.login,
-        url: user.url,
-        id: user.id,
       };
     });
     return users;

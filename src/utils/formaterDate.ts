@@ -1,7 +1,7 @@
 import dayjs from "dayjs"
 
-export default function formatDate(ISO: string): string {
-    const date = dayjs(ISO);
+export default function formaterDate(isoDate: string): string {
+    const date = dayjs(isoDate);
     const formateDate = date.format("MMM D, YYYY");
 
     return formateDate;

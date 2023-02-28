@@ -14,9 +14,13 @@ export const ThemeArea = styled.div`
 export const Warn = styled.small`
   font-weight: bold;
   font-size: 1.5rem;
-  line-height: 2.2rem;
+  z-index: -1;
   color: #f74646;
   margin-right: 2.4rem;
+  svg {
+    margin-right: 0.5rem;
+    vertical-align: top;
+  }
 `;
 
 export const Loading = styled.div`
@@ -27,6 +31,7 @@ export const Loading = styled.div`
   font-weight: bold;
   font-size: 3rem;
   opacity: 0.5;
+  color: ${(props) => props.theme.colors.textNorm};
 `;
 
 export const ChangeThemeBtn = styled.button`
