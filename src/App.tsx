@@ -14,12 +14,12 @@ function App() {
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/">
             <Route index element={<UserSearch />} />
-            <Route path="/user/:id" element={<UserDetailsModal />} />
+            <Route path="/user/:login" element={<UserDetailsModal />} />
           </Route>
         </Routes>
         {state?.backgroundLocation && (
           <Routes>
-            <Route path="/user/:id" element={<UserDetailsModal />} />
+            <Route path="/user/:login" element={<UserDetailsModal />} />
           </Routes>
         )}
       </Container>

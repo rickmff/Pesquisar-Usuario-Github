@@ -1,10 +1,10 @@
 import { UsersList } from "../UsersList";
-import { Moon, Search, Sun } from "react-feather";
+import { Frown, Moon, Search, Sun } from "react-feather";
 import * as S from "./styles";
 import { useGithubSearch } from "../../hooks/useGithubSearch";
 import { useLocation } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
-import { useContext, useState } from "react";
+import { useContext, useState, FormEvent, useEffect } from "react";
 import { FadeIn } from "../../animations/fadeIn";
 import { DropDown } from "../../animations/dropDown";
 
@@ -12,25 +12,29 @@ export const UserSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
 
   const [user, setUser] = useState("");
-  const { data, isLoading } = useGithubSearch(user);
-  const [notFound, setNotFound] = useState<boolean>(false);
+  const [warning, setWarning] = useState(false);
+  const { data, isError, isLoading } = useGithubSearch(user);
   const location = useLocation();
 
-  const dataEmpty = data?.length === 0;
-
-  function handleSubmit(e: any) {
-
-    console.log(e);
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    const input = e.target as HTMLFormElement;
+    console.log(input.username.value);
     if (
-      e.target.username.value.trim() === "" ||
-      e.target.username.value === undefined
+      input.username.value.trim() === "" ||
+      input.username.value === undefined
     ) {
-      setNotFound(true);
       return;
     }
-    setNotFound(false);
-    setUser(e.target.username.value);
+    setUser(input.username.value);
   }
+
+  useEffect(() => {
+    if (data?.length !== 0) {
+      setWarning(false);
+    } else {
+      setWarning(true);
+    }
+  }, [handleSubmit])
 
   return (
     <S.Container>
@@ -56,13 +60,16 @@ export const UserSearch = () => {
             name="username"
             id="username"
             type="text"
+            pattern="[a-zA-Z0-9]+"
             placeholder="Digite um nome de usuário e pressione Enter ..."
+            required
+            title="Digite um nome de usuário válido sem caracteres especiais"
           />
         </S.InputArea>
 
         <S.Warn>
-          {!isLoading && (notFound || dataEmpty) && (
-            <DropDown delay={1}>Digite um nome de usuário válido</DropDown>
+          {!isLoading && warning || isError && (
+            <DropDown delay={1}><Frown />Nenhum usuário encontrado</DropDown>
           )}
         </S.Warn>
       </FadeIn>
@@ -73,9 +80,3 @@ export const UserSearch = () => {
     </S.Container>
   );
 };
-
-/*
-- Padronizar os design tokens (media queries, tamanhos etc)
-- Acho que os tipos que voce passa pra cada componente lá de details 
-por ex poderiam ser derivados dos tipos das respostas da api em si 
-*/

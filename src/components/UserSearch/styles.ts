@@ -27,6 +27,7 @@ export const Loading = styled.div`
   font-weight: bold;
   font-size: 3rem;
   opacity: 0.5;
+  color: ${(props) => props.theme.colors.textNorm};
 `;
 
 export const ChangeThemeBtn = styled.button`

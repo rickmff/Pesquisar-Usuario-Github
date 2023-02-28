@@ -24,7 +24,3 @@ export interface UserLinks {
   blog: string;
   email: string;
 }
-
-export interface SearchBarProps {
-  setUser: (user: UserDetails | null) => void;
-}

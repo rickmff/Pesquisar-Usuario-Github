@@ -37,9 +37,9 @@ export const ContentModal = styled(Dialog.Content)`
   align-items: center;
   justify-content: center;
   width: 90vw;
-  min-height: 90vh;
+  max-height: 90vh;
   max-width: 1200px;
-  margin: auto;
+  margin: 3rem auto;
   padding: 2rem;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.background};
