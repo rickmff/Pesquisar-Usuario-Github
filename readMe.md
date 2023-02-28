@@ -3,7 +3,7 @@
 ### O seguinte projeto foi desenvolvido com propósito de demonstrar qualificação técnica com os requisitos solicitados no documento:
 - https://docs.google.com/document/d/1ulHllzDqBpEMjDbKsz_DYq7KreM-aWFej1cn7dwFl5M/edit#
 
-### Foi ultilizado
+## Foi ultilizado
 - React + Vite + Typescript
 - React Router
 - React feather
@@ -15,15 +15,15 @@
 - Framer Motion
 - Cypress
 
-### Foi desenvolvido 
-- O projeto que pesquisa usuários do Github pelo nome de usuário listando cada perfil e podendo exibir o detalhe dos perfils dinamicamente em um modal.
+## Foi desenvolvido 
+-  projeto que pesquisa usuários do Github pelo nome de usuário listando cada perfil e podendo exibir o detalhe dos perfils dinamicamente em um modal.
 
-### Setup
-#### Instalar as dependências
+## Setup
+### Instalar as dependências
 ```
   npm i
 ```
-#### Testes com e2e com cypress
+### Testes com e2e com cypress
 ```
   npm run test
 ```
