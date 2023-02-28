@@ -19,8 +19,6 @@ export const UserDetailsModal = () => {
     return navigate(-1);
   };
 
-  console.log(data);
-
   return (
     <S.Container>
       {!isLoading && data && (

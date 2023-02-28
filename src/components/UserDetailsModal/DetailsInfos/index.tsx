@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import * as S from "./styles";
 import { ThemeContext } from "../../../context/ThemeContext";
-import { MapPin, Link2, Twitter, Briefcase } from "react-feather";
+import { MapPin, Link2, AtSign, Briefcase } from "react-feather";
 
 interface DetailsInfosPropos {
   links: {
@@ -9,13 +9,12 @@ interface DetailsInfosPropos {
     blog: string;
     company: string;
     email: string;
-    twitter_username: string;
   };
 }
 
 export function DetailsInfos({ links }: DetailsInfosPropos) {
   const { lightMode } = useContext(ThemeContext);
-
+  
   return (
     <S.Container theme={lightMode}>
       <S.Link>
@@ -31,12 +30,12 @@ export function DetailsInfos({ links }: DetailsInfosPropos) {
       </S.Link>
 
       <S.Link>
-        <Twitter />
+        <AtSign />
         <a
-          href={`https://twitter.com/${links.twitter_username}`}
+          href={`${links.email ? `mailto:${links.email}` : null}`}
           target="_blank"
         >
-          {links.twitter_username || "Não tem"}
+          {links.email || "Não tem"}
         </a>
       </S.Link>
 

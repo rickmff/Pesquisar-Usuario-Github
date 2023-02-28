@@ -9,7 +9,6 @@ export interface UserDetails {
   created_at: string;
   login: string;
   links: {
-    twitter_username: string;
     company: string;
     location: string;
     blog: string;

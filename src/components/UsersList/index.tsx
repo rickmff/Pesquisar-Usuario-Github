@@ -12,12 +12,12 @@ export const UsersList = ({ list, location }: UsersListProps) => {
   return (
     <S.Container>
       {list.map((user: User, index) => (
-        <FadeIn delay={0.25 * index}>
-          <Link
-            to={`/user/${user.login}`}
-            key={user.id}
-            state={{ backgroundLocation: location }}
-          >
+        <Link
+          to={`/user/${user.login}`}
+          key={user.id}
+          state={{ backgroundLocation: location }}
+        >
+          <FadeIn delay={0.25 * index}>
             <S.UserCard>
               <img
                 src={user.avatar_url}
@@ -25,8 +25,8 @@ export const UsersList = ({ list, location }: UsersListProps) => {
               />
               {user.login}
             </S.UserCard>
-          </Link>
-        </FadeIn>
+          </FadeIn>
+        </Link>
       ))}
     </S.Container>
   );
