@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { ThemeContextProvider } from "./context/ThemeContext";
-import { UserSearch } from "./components/UserSearch";
-import { UserDetailsModal } from "./components/UserDetailsModal";
+import { UsersSearch } from "./pages/UsersSearch";
+import { UserDetails } from "./pages/UserDetails";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 function App() {
@@ -13,13 +13,13 @@ function App() {
       <Container>
         <Routes location={state?.backgroundLocation || location}>
           <Route path="/">
-            <Route index element={<UserSearch />} />
-            <Route path="/user/:login" element={<UserDetailsModal />} />
+            <Route index element={<UsersSearch />} />
+            <Route path="/user/:login" element={<UserDetails />} />
           </Route>
         </Routes>
         {state?.backgroundLocation && (
           <Routes>
-            <Route path="/user/:login" element={<UserDetailsModal />} />
+            <Route path="/user/:login" element={<UserDetails />} />
           </Routes>
         )}
       </Container>

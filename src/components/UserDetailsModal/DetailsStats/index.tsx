@@ -1,12 +1,12 @@
 import * as S from "./styles";
-import { UserStatsProps } from "../../../interfaces";
+import { UserStats } from "../../../interfaces";
 
-export const DetailsStats = ({ repos, followers, following }: UserStatsProps) => {
+export const DetailsStats = ({ public_repos, followers, following }: UserStats) => {
   return (
     <S.Container>
       <S.Stats>
         <span>Repos</span>
-        <strong>{repos}</strong>
+        <strong>{public_repos}</strong>
       </S.Stats>
 
       <S.Stats>
