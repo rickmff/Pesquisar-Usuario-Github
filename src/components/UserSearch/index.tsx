@@ -4,25 +4,32 @@ import * as S from "./styles";
 import { useGithubSearch } from "../../hooks/useGithubSearch";
 import { useLocation } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
-import { useContext, useState, useRef } from "react";
+import { useContext, useState } from "react";
 import { FadeIn } from "../../animations/fadeIn";
+import { DropDown } from "../../animations/dropDown";
 
 export const UserSearch = () => {
   const { changeTheme, lightMode } = useContext(ThemeContext);
 
-  const usernameRef = useRef<HTMLInputElement>(null);
   const [user, setUser] = useState("");
-  const { data, isError, isLoading } = useGithubSearch(user);
+  const { data, isLoading } = useGithubSearch(user);
+  const [notFound, setNotFound] = useState<boolean>(false);
   const location = useLocation();
 
-  function handleSubmit() {
+  const dataEmpty = data?.length === 0;
+
+  function handleSubmit(e: any) {
+
+    console.log(e);
     if (
-      usernameRef.current?.value.trim() === "" ||
-      usernameRef.current?.value === undefined
+      e.target.username.value.trim() === "" ||
+      e.target.username.value === undefined
     ) {
+      setNotFound(true);
       return;
     }
-    setUser(usernameRef.current.value);
+    setNotFound(false);
+    setUser(e.target.username.value);
   }
 
   return (
@@ -37,7 +44,7 @@ export const UserSearch = () => {
         <S.InputArea
           onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit();
+            handleSubmit(e);
           }}
         >
           <S.SubmitBtn type="submit">
@@ -46,13 +53,18 @@ export const UserSearch = () => {
             </S.InputLabel>
           </S.SubmitBtn>
           <S.Input
-            ref={usernameRef}
             name="username"
             id="username"
             type="text"
-            placeholder="Pesquisar Usuário ..."
+            placeholder="Digite um nome de usuário e pressione Enter ..."
           />
         </S.InputArea>
+
+        <S.Warn>
+          {!isLoading && (notFound || dataEmpty) && (
+            <DropDown delay={1}>Digite um nome de usuário válido</DropDown>
+          )}
+        </S.Warn>
       </FadeIn>
 
       {isLoading && <S.Loading>Carregando...</S.Loading>}
@@ -61,3 +73,9 @@ export const UserSearch = () => {
     </S.Container>
   );
 };
+
+/*
+- Padronizar os design tokens (media queries, tamanhos etc)
+- Acho que os tipos que voce passa pra cada componente lá de details 
+por ex poderiam ser derivados dos tipos das respostas da api em si 
+*/

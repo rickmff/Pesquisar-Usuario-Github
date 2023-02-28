@@ -1,31 +1,23 @@
-import formatDate from "../../../utils/formatDate";
+import formaterDate from "../../../utils/formaterDate";
 import * as S from "./styles";
-
-interface DetailsHeaderProps {
-  username: string;
-  bio: string;
-  name: string;
-  joinedAt: string;
-  avatar: string;
-}
+import { UserHeader } from "../../../interfaces";
 
 export const DetailsHeader = ({
-  username,
+  login,
   name,
-  joinedAt,
   bio,
-  avatar,
-}: DetailsHeaderProps) => {
-
-  const date = formatDate(joinedAt);
+  created_at,
+  avatar_url,
+}: UserHeader) => {
+  const date = formaterDate(created_at);
   return (
     <>
       <S.Info>
-        <S.Avatar src={avatar} alt={name} />
+        <S.Avatar src={avatar_url} alt={name} />
         <S.Info>
           <S.Name>{name}</S.Name>
           <span>
-            <a href={`https://github.com/${username}`}>@{username}</a>
+            <a href={`https://github.com/${login}`}>@{login}</a>
           </span>
           <span>{date}</span>
         </S.Info>

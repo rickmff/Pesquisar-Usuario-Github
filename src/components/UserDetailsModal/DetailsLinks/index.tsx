@@ -2,46 +2,35 @@ import { useContext } from "react";
 import * as S from "./styles";
 import { ThemeContext } from "../../../context/ThemeContext";
 import { MapPin, Link2, AtSign, Briefcase } from "react-feather";
+import { UserLinks } from "../../../interfaces";
 
-interface DetailsInfosPropos {
-  links: {
-    location: string;
-    blog: string;
-    company: string;
-    email: string;
-  };
-}
-
-export function DetailsInfos({ links }: DetailsInfosPropos) {
+export function DetailsLinks({ company, location, blog, email }: UserLinks) {
   const { lightMode } = useContext(ThemeContext);
-  
+
   return (
     <S.Container theme={lightMode}>
       <S.Link>
         <MapPin />
-        <span>{links.location || "Não tem"}</span>
+        <span>{location || "Não tem"}</span>
       </S.Link>
 
       <S.Link>
         <Link2 />
-        <a href={links.blog} target="_blank">
-          {links.blog || "Não tem"}
+        <a href={blog} target="_blank">
+          {blog || "Não tem"}
         </a>
       </S.Link>
 
       <S.Link>
         <AtSign />
-        <a
-          href={`${links.email ? `mailto:${links.email}` : null}`}
-          target="_blank"
-        >
-          {links.email || "Não tem"}
+        <a href={`${email ? `mailto:${email}` : null}`} target="_blank">
+          {email || "Não tem"}
         </a>
       </S.Link>
 
       <S.Link>
         <Briefcase />
-        <span>{links.company || "Não tem"}</span>
+        <span>{company || "Não tem"}</span>
       </S.Link>
     </S.Container>
   );

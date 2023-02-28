@@ -14,7 +14,7 @@ export const ThemeArea = styled.div`
 export const Warn = styled.small`
   font-weight: bold;
   font-size: 1.5rem;
-  line-height: 2.2rem;
+  z-index: -1;
   color: #f74646;
   margin-right: 2.4rem;
 `;

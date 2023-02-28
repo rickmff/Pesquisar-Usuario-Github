@@ -7,7 +7,7 @@ interface DropDownProps {
 
 export const DropDown = ({ children, delay }:DropDownProps) => (
   <motion.div
-    initial={{ opacity: 1, transform: 'translateY(-80px)' }}
+    initial={{ opacity: 0, transform: 'translateY(-20px)' }}
     animate={{ opacity: 1, transform: 'translateY(0px)' }}
     viewport={{ once: true }}
     transition={{ duration: delay }}
