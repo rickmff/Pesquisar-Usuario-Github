@@ -1,9 +1,9 @@
-# Pesquisar Usuarios no GitHub
+# Search GitHub Users
 
-### O seguinte projeto foi desenvolvido com propósito de demonstrar qualificação técnica com os requisitos solicitados no documento:
+### The following project was developed for demonstrating technical qualification of requirements requested in this document:
 - https://docs.google.com/document/d/1ulHllzDqBpEMjDbKsz_DYq7KreM-aWFej1cn7dwFl5M/edit#
 
-## Foi ultilizado
+## Stack
 - React + Vite + Typescript
 - React Router
 - React feather
@@ -15,21 +15,18 @@
 - Framer Motion
 - Cypress
 
-## Foi desenvolvido 
--  projeto que pesquisa usuários do Github pelo nome de usuário listando cada perfil e podendo exibir o detalhe dos perfils dinamicamente em um modal.
-
 ## Setup
-### Instalar as dependências
+### Install dependencies
 ```
-  npm i
+  npm install
 ```
-### Testes com e2e com cypress
+### Tests e2e with cypress
 ```
   npm run test
 ```
 
 ## Preview
-### Preview em produção
+### Preview in prod
 - https://pesquisar-usuario-github.vercel.app/
 <br/>
 
